@@ -1,0 +1,30 @@
+{
+    "name": "mobileia/mia-authentication-expressive",
+    "description": "The library for Zend Expressive 3",
+    "version": "0.0.1",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [{
+        "name": "Matias Camiletti",
+        "homepage": "http://www.mobileia.com"
+    }],
+    "repositories": [{
+        "type": "git",
+        "url": "https://github.com/MobileIA/mia-authentication-expressive.git"
+    }],
+    "require": {
+        "php": "^7.1",
+        "psr/container": "^1.0",
+        "zendframework/zend-expressive": "^3.0.1",
+        "zendframework/zend-diactoros": "^1.7.1",
+        "illuminate/database": "^5.6",
+        "mobileia/mia-eloquent-expressive": "dev-master",
+        "mobileia/mia-core-expressive": "dev-master",
+        "mobileia/auth": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mobileia\\Expressive\\Auth\\": "src/"
+        }
+    }
+}
