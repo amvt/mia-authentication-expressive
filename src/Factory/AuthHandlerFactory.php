@@ -9,7 +9,7 @@ use Zend\Expressive\Router\RouterInterface;
 
 class AuthHandlerFactory
 {
-    public function __invoke(ContainerInterface $container) : Mobileia\Expressive\Auth
+    public function __invoke(ContainerInterface $container) : \Mobileia\Expressive\Auth\Handler\AuthHandler
     {
         // Creamos servicio
         $service   = $container->get(\MobileIA\Auth\MobileiaAuth::class);
