@@ -6,7 +6,7 @@
  *
  * @author matiascamiletti
  */
-class MiaAuthRequestHandler extends \Mobileia\Expressive\Request\MiaRequestHandler
+abstract class MiaAuthRequestHandler extends \Mobileia\Expressive\Request\MiaRequestHandler
 {
     /**
      * Obtiene usuario logueado
