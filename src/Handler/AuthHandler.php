@@ -32,7 +32,7 @@ class AuthHandler implements MiddlewareInterface
         // Validar AccessToken
         $userId = $this->verifyAccessToken($accessToken);
         if($userId === false){
-            return new MiaJsonErrorResponse(["not_login"]);
+            return new MiaJsonErrorResponse(-2, 'No se ha podido conectar con la cuenta.');
         }
         // Obtener usuario
         $user = \Mobileia\Expressive\Auth\Repository\MIAUserRepository::findByMiaID($userId);
