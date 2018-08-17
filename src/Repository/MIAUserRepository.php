@@ -6,4 +6,9 @@ class MIAUserRepository
     {
         return \Mobileia\Expressive\Auth\Model\MIAUser::where('mia_id', $miaId)->first();
     }
+    
+    public static function findByEmail($email)
+    {
+        return \Mobileia\Expressive\Auth\Model\MIAUser::where('email', $email)->first();
+    }
 }
