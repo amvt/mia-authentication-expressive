@@ -2,6 +2,14 @@
 
 namespace Mobileia\Expressive\Auth\Handler;
 
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
+use Zend\Expressive\Router;
+use Mobileia\Expressive\Diactoros\MiaJsonResponse;
+use Mobileia\Expressive\Diactoros\MiaJsonErrorResponse;
+
 /**
  * Description of AuthOptionalHandler
  *
@@ -9,7 +17,7 @@ namespace Mobileia\Expressive\Auth\Handler;
  */
 class AuthOptionalHandler extends AuthHandler
 {
-    public function process(\Psr\Http\Message\ServerRequestInterface $request, \Psr\Http\Server\RequestHandlerInterface $handler)
+    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler) : ResponseInterface
     {
         // obtener accessToken
         $accessToken = $this->getAccessToken($request);
