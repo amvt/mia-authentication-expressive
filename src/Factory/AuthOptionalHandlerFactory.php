@@ -17,6 +17,6 @@ class AuthOptionalHandlerFactory
         // Creamos servicio
         $service   = $container->get(\MobileIA\Auth\MobileiaAuth::class);
         // Generamos el handler
-        return new \Mobileia\Expressive\Auth\Handler\AuthHandler($service);
+        return new \Mobileia\Expressive\Auth\Handler\AuthOptionalHandler($service);
     }
 }
