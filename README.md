@@ -3,6 +3,8 @@ Libreria para autenticar usando MobileIA Lab.
 
 1. Incluir libreria:
 ```bash
+composer require mobileia/auth
+composer require mobileia/mia-core-expressive
 composer require mobileia/mia-authentication-expressive
 ```
 2. Incluir configuración en el archivo: "config/config.php"
