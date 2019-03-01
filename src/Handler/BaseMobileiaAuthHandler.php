@@ -7,7 +7,7 @@ namespace Mobileia\Expressive\Auth\Handler;
  *
  * @author matiascamiletti
  */
-class BaseMobileiaAuthHandler extends \Mobileia\Expressive\Auth\Request\MiaAuthRequestHandler
+abstract class BaseMobileiaAuthHandler extends \Mobileia\Expressive\Auth\Request\MiaAuthRequestHandler
 {
     /**s
      * @var \MobileIA\Auth\MobileiaAuth
