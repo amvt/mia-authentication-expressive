@@ -6,7 +6,7 @@ namespace Mobileia\Expressive\Auth\Middleware;
  *
  * @author matiascamiletti
  */
-class MiaAuthMiddleware extends \Mobileia\Expressive\Middleware\MiaBaseMiddleware
+abstract class MiaAuthMiddleware extends \Mobileia\Expressive\Middleware\MiaBaseMiddleware
 {
     /**
      * Obtiene usuario logueado
