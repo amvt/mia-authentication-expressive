@@ -25,8 +25,8 @@ class MiaRegisterHandler extends \Mobileia\Expressive\Request\MiaRequestHandler
         }
         // Actualizamos los parametros
         $user->mia_id = $miaId;
-        $user->firstname = $this->getParam($request, 'firstname', '');
-        $user->lastname = $this->getParam($request, 'lastname', '');
+        $user->firstname = ucfirst($this->getParam($request, 'firstname', ''));
+        $user->lastname = ucfirst($this->getParam($request, 'lastname', ''));
         $user->email = $this->getParam($request, 'email', '');
         $user->photo = $this->getParam($request, 'photo', '');
         $user->phone = $this->getParam($request, 'phone', '');
