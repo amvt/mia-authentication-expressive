@@ -11,6 +11,8 @@ class MIAAccessToken  extends \Illuminate\Database\Eloquent\Model
 {
     protected $table = 'mia_access_token';
     
+    protected $casts = ['device_data' => 'array'];
+    
     /**
      * Genera la fecha de expiración del accessToken
      * @return string
