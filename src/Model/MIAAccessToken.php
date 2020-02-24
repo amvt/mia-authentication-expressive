@@ -9,6 +9,10 @@ namespace Mobileia\Expressive\Auth\Model;
  */
 class MIAAccessToken  extends \Illuminate\Database\Eloquent\Model
 {
+    const PLATFORM_WEB = 1;
+    const PLATFORM_IOS = 2;
+    const PLATFORM_ANDROID = 3;
+    
     protected $table = 'mia_access_token';
     
     protected $casts = ['device_data' => 'array'];
