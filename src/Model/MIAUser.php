@@ -10,5 +10,29 @@ class MIAUser extends \Illuminate\Database\Eloquent\Model
      * Campos que se ocultan al obtener los registros
      * @var array
      */
-    protected $hidden = ['deleted'];
+    protected $hidden = ['deleted', 'password'];
+    
+    /**
+     * 
+     * @param string $password
+     * @return string
+     */
+    public static function encryptPassword($password)
+    {
+        $bcrypt = new \Zend\Crypt\Password\Bcrypt();
+        $bcrypt->setCost(10);
+        return $bcrypt->create($password);
+    }
+    /**
+     * Valida si el password es correcto
+     * @param string $password
+     * @param string $hash
+     * @return boolean
+     */
+    public static function verifyPassword($password, $hash)
+    {
+        $bcrypt = new \Zend\Crypt\Password\Bcrypt();
+        $bcrypt->setCost(10);
+        return $bcrypt->verify($password, $hash);
+    }
 }
