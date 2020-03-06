@@ -17,7 +17,7 @@ class RegisterInternalHandler extends \Mobileia\Expressive\Request\MiaRequestHan
         // Verificar si ya existe la cuenta
         $account = \Mobileia\Expressive\Auth\Model\MIAUser::where('email', $email)->first();
         if($account !== null){
-            return new Mobileia\Expressive\Diactoros\MiaJsonErrorResponse(-1, 'Este email ya se encuentra registrado');
+            return new \Mobileia\Expressive\Diactoros\MiaJsonErrorResponse(-1, 'Este email ya se encuentra registrado');
         }
         // Creamos cuenta
         $account = new \Mobileia\Expressive\Auth\Model\MIAUser();
