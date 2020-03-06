@@ -23,7 +23,7 @@ class RegisterInternalHandler extends \Mobileia\Expressive\Request\MiaRequestHan
         $account = new \Mobileia\Expressive\Auth\Model\MIAUser();
         $account->mia_id = 0;
         $account->firstname = $this->getParam($request, 'firstname', '');
-        $account->lastname = $this->getParam($request, '', '');
+        $account->lastname = $this->getParam($request, 'lastname', '');
         $account->email = $email;
         $account->phone = $this->getParam($request, 'phone', '');
         $account->photo = $this->getParam($request, 'photo', '');
