@@ -4,7 +4,7 @@ class MIAUserRepository
 {
     public static function findByID($id)
     {
-        return \Mobileia\Expressive\Auth\Model\MIAUser::where('id', $miaId)->first();
+        return \Mobileia\Expressive\Auth\Model\MIAUser::where('id', $id)->first();
     }
     
     public static function findByMiaID($miaId)
