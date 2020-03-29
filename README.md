@@ -34,3 +34,9 @@ $app->route('/api/home', [
 ```php
 $user = $request->getAttribute(\Mobileia\Expressive\Auth\Model\MIAUser::class);
 ```
+5. Activar Autenticación interna, agregando las rutas:
+```php
+    /** AUTHENTICATION **/
+    $app->route('/mia-auth/login', [Mobileia\Expressive\Auth\Handler\LoginInternalHandler::class], ['GET', 'POST'], 'mia_auth.login');
+    $app->route('/mia-auth/register', [Mobileia\Expressive\Auth\Handler\RegisterInternalHandler::class], ['GET', 'POST'], 'mia_auth.register');
+```
