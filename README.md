@@ -39,4 +39,5 @@ $user = $request->getAttribute(\Mobileia\Expressive\Auth\Model\MIAUser::class);
     /** AUTHENTICATION **/
     $app->route('/mia-auth/login', [Mobileia\Expressive\Auth\Handler\LoginInternalHandler::class], ['GET', 'POST'], 'mia_auth.login');
     $app->route('/mia-auth/register', [Mobileia\Expressive\Auth\Handler\RegisterInternalHandler::class], ['GET', 'POST'], 'mia_auth.register');
+    $app->route('/mia-auth/update-profile', [Mobileia\Expressive\Auth\Handler\UpdateProfileHandler::class], ['GET', 'POST'], 'mia_auth.update-profile');
 ```
