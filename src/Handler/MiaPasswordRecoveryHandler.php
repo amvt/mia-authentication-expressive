@@ -17,7 +17,7 @@ class MiaPasswordRecoveryHandler extends \Mobileia\Expressive\Request\MiaRequest
         $token = $this->getParam($request, 'token', '');
         // Verificar si ya existe la cuenta
         $account = \Mobileia\Expressive\Auth\Model\MIAUser::where('email', $email)->first();
-        if($account !== null){
+        if($account === null){
             return new \Mobileia\Expressive\Diactoros\MiaJsonErrorResponse(-1, 'No existe este mail');
         }
         // Buscar si existe el token
