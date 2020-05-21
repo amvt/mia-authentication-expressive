@@ -21,8 +21,8 @@ class MiaPasswordRecoveryHandler extends \Mobileia\Expressive\Request\MiaRequest
             return new \Mobileia\Expressive\Diactoros\MiaJsonErrorResponse(-1, 'No existe este mail');
         }
         // Buscar si existe el token
-        $token = \Mobileia\Expressive\Auth\Model\MIARecovery::where('user_id', $account->id)->where('token', $token)->first();
-        if($token === null){
+        $recovery = \Mobileia\Expressive\Auth\Model\MIARecovery::where('user_id', $account->id)->where('token', $token)->first();
+        if($recovery === null){
             return new \Mobileia\Expressive\Diactoros\MiaJsonErrorResponse(-1, 'El token es incorrecto');
         }
         $recovery->status = \Mobileia\Expressive\Auth\Model\MIARecovery::STATUS_USED;
