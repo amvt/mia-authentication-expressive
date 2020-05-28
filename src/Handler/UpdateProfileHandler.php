@@ -33,6 +33,14 @@ class UpdateProfileHandler extends \Mobileia\Expressive\Auth\Request\MiaAuthRequ
         foreach($this->extras as $extra){
             $item->{$extra} = $this->getParam($request, $extra, '');
         }
+        // Verificar si cambio el email
+        $newEmail = $this->getParam($request, 'email', '');
+        if($newEmail != $item->email){
+            // Verificar si existe el nuevo email
+            if(\Mobileia\Expressive\Auth\Model\MIAUser::where('email', $newEmail)->first() !== null){
+                return new \Mobileia\Expressive\Diactoros\MiaJsonErrorResponse(-3, 'El nuevo email ya existe!');
+            }
+        }
         $item->save();
         // Devolvemos datos del usuario
         return new \Mobileia\Expressive\Diactoros\MiaJsonResponse($item->toArray());
