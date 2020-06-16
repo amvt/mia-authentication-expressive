@@ -38,6 +38,7 @@ class ConfigProvider
                 \MobileIA\Auth\MobileiaAuth::class => \Mobileia\Expressive\Auth\Factory\MobileiaAuthFactory::class,
                 \Mobileia\Expressive\Auth\Handler\AuthHandler::class => \Mobileia\Expressive\Auth\Factory\AuthHandlerFactory::class,
                 \Mobileia\Expressive\Auth\Handler\AuthOptionalHandler::class => \Mobileia\Expressive\Auth\Factory\AuthOptionalHandlerFactory::class,
+                \Mobileia\Expressive\Auth\Handler\GoogleSignInHandler::class => \Mobileia\Expressive\Auth\Factory\GoogleSignInFactory::class,
             ],
         ];
     }
