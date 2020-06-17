@@ -42,4 +42,5 @@ $user = $request->getAttribute(\Mobileia\Expressive\Auth\Model\MIAUser::class);
     $app->route('/mia-auth/update-profile', [Mobileia\Expressive\Auth\Handler\UpdateProfileHandler::class], ['GET', 'POST', 'OPTIONS', 'HEAD'], 'mia_auth.update-profile');
 
     $app->route('/mia-auth/google-signin', [Mobileia\Expressive\Auth\Handler\GoogleSignInHandler::class], ['GET', 'POST', 'OPTIONS', 'HEAD'], 'mia_auth.google-signin');
+    $app->route('/mia-auth/apple-signin', [Mobileia\Expressive\Auth\Handler\AppleSignInHandler::class], ['GET', 'POST', 'OPTIONS', 'HEAD'], 'mia_auth.apple-signin');
 ```
