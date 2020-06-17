@@ -17,7 +17,7 @@ class GoogleSignInHandler extends \Mobileia\Expressive\Request\MiaRequestHandler
     
     public function __construct($params)
     {
-        $this-$paramsGoogle = $params;
+        $this->paramsGoogle = $params;
     }
     
     public function handle(\Psr\Http\Message\ServerRequestInterface $request): \Psr\Http\Message\ResponseInterface
@@ -54,7 +54,7 @@ class GoogleSignInHandler extends \Mobileia\Expressive\Request\MiaRequestHandler
         $account->email = $email;
         $account->phone = $this->getParam($request, 'phone', '');
         $account->photo = $this->getParam($request, 'photo', '');
-        $account->password = \Mobileia\Expressive\Auth\Model\MIAUser::encryptPassword($password);
+        $account->password = 'empty';
         $account->role = \Mobileia\Expressive\Auth\Model\MIAUser::ROLE_GENERAL;
         $account->save();
         

@@ -28,12 +28,11 @@ class GoogleHelper
             // Convertir string en objeto
             $this->payload = \Zend\Json\Json::decode($string, \Zend\Json\Json::TYPE_ARRAY);
             // Validar si es correcto
-            if($this->payload['aud'] == $clientId){
+            if($this->payload['aud'] != '' && $this->payload['aud'] != null){
                 return true;
             }
             return false;
-        } catch (\UnexpectedValueException $exc) {
-            echo $exc->getMessage(); exit();
+        } catch (\Exception $exc) {
             return false;
         }
     }

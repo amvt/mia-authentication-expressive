@@ -37,9 +37,9 @@ $user = $request->getAttribute(\Mobileia\Expressive\Auth\Model\MIAUser::class);
 5. Activar Autenticación interna, agregando las rutas:
 ```php
     /** AUTHENTICATION **/
-    $app->route('/mia-auth/login', [Mobileia\Expressive\Auth\Handler\LoginInternalHandler::class], ['GET', 'POST'], 'mia_auth.login');
-    $app->route('/mia-auth/register', [Mobileia\Expressive\Auth\Handler\RegisterInternalHandler::class], ['GET', 'POST'], 'mia_auth.register');
-    $app->route('/mia-auth/update-profile', [Mobileia\Expressive\Auth\Handler\UpdateProfileHandler::class], ['GET', 'POST'], 'mia_auth.update-profile');
+    $app->route('/mia-auth/login', [Mobileia\Expressive\Auth\Handler\LoginInternalHandler::class], ['GET', 'POST', 'OPTIONS', 'HEAD'], 'mia_auth.login');
+    $app->route('/mia-auth/register', [Mobileia\Expressive\Auth\Handler\RegisterInternalHandler::class], ['GET', 'POST', 'OPTIONS', 'HEAD'], 'mia_auth.register');
+    $app->route('/mia-auth/update-profile', [Mobileia\Expressive\Auth\Handler\UpdateProfileHandler::class], ['GET', 'POST', 'OPTIONS', 'HEAD'], 'mia_auth.update-profile');
 
-    $app->route('/mia-auth/google-signin', [Mobileia\Expressive\Auth\Handler\GoogleSignInHandler::class], ['GET', 'POST'], 'mia_auth.google-signin');
+    $app->route('/mia-auth/google-signin', [Mobileia\Expressive\Auth\Handler\GoogleSignInHandler::class], ['GET', 'POST', 'OPTIONS', 'HEAD'], 'mia_auth.google-signin');
 ```
