@@ -35,15 +35,15 @@ class AppleSignInHandler extends \Mobileia\Expressive\Request\MiaRequestHandler
         // Buscamos si este email tiene cuenta de Google
         $account = \Mobileia\Expressive\Auth\Model\MIAUser::where('email', $email)->first();
         if($account === null){
-            return $this->register($request, $service->getUser());
+            return $this->register($request);
         }else{
             return $this->login($request, $account);
         }
     }
     
-    protected function register($request, $googleUser)
+    protected function register($request)
     {
-        $email = $googleUser['email'] == '' ? $this->getParam($request, 'email', '') : $googleUser['email'];
+        $email = $this->getParam($request, 'email', '');
         if($email == ''){
             return new \Mobileia\Expressive\Diactoros\MiaJsonErrorResponse(-2, 'No se ha enviado el email correcto!');
         }
