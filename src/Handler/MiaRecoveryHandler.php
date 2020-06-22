@@ -19,7 +19,7 @@ class MiaRecoveryHandler extends \Mobileia\Expressive\Request\MiaRequestHandler
             return new \Mobileia\Expressive\Diactoros\MiaJsonErrorResponse(-1, 'Este email no existe');
         }
         // Generar registro de token
-        $token = \Mobileia\Expressive\Auth\Model\MIAUser::encryptPassword($user->id . '_' . time() . '_' . $user->id);
+        $token = \Mobileia\Expressive\Auth\Model\MIAUser::encryptPassword($email . '_' . time() . '_' . $email);
         $recovery = new \Mobileia\Expressive\Auth\Model\MIARecovery();
         $recovery->user_id = $account->id;
         $recovery->status = \Mobileia\Expressive\Auth\Model\MIARecovery::STATUS_PENDING;
