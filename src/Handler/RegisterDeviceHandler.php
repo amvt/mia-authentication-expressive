@@ -18,7 +18,7 @@ class RegisterDeviceHandler extends \Mobileia\Expressive\Auth\Request\MiaAuthReq
         $user = $this->getUser($request);
         // Registrar nuevo token
         $device = \Mobileia\Expressive\Auth\Model\MIADevice::where('user_id', $user->id)->first();
-        if($device !== null){
+        if($device === null){
             $device = new \Mobileia\Expressive\Auth\Model\MIADevice();
             $device->user_id = $user->id;
         }
