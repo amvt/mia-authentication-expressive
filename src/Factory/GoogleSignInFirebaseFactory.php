@@ -11,7 +11,7 @@ use Psr\Container\ContainerInterface;
  */
 class GoogleSignInFirebaseFactory
 {
-    public function __invoke(ContainerInterface $container) : \Mobileia\Expressive\Auth\Handler\GoogleSignInHandler
+    public function __invoke(ContainerInterface $container) : \Mobileia\Expressive\Auth\Handler\GoogleSignInFirebaseHandler
     {
         // Obtenemos configuracion
         $config = $container->get('config')['google'];
