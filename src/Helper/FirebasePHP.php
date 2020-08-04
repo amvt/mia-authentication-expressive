@@ -25,7 +25,7 @@ class FirebasePHP
      */
     public function verifyIdToken($idToken) 
     {
-        $auth = $factory->createAuth();
+        $auth = $this->service->createAuth();
 
         try {
             $verifiedIdToken = $auth->verifyIdToken($idTokenString);
