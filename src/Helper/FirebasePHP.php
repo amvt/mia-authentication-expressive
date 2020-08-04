@@ -28,7 +28,7 @@ class FirebasePHP
         $auth = $this->service->createAuth();
 
         try {
-            $verifiedIdToken = $auth->verifyIdToken($idTokenString);
+            $verifiedIdToken = $auth->verifyIdToken($idToken);
             $uid = $verifiedIdToken->getClaim('sub');
             return $auth->getUser($uid);
         } catch (\InvalidArgumentException $e) {
