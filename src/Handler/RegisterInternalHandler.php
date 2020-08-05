@@ -39,12 +39,21 @@ class RegisterInternalHandler extends \Mobileia\Expressive\Request\MiaRequestHan
         $account->save();
         
         if($this->sendMail){
+            // Generar registro de token
+            $token = \Mobileia\Expressive\Auth\Model\MIAUser::encryptPassword($email . '_' . time() . '_' . $email);
+            $recovery = new \Mobileia\Expressive\Auth\Model\MIAActive();
+            $recovery->user_id = $account->id;
+            $recovery->status = \Mobileia\Expressive\Auth\Model\MIAActive::STATUS_PENDING;
+            $recovery->token = $token;
+            $recovery->save();
+            
             /* @var $sendgrid \Mobileia\Expressive\Mail\Service\Sendgrid */
             $sendgrid = $request->getAttribute('Sendgrid');
             $sendgrid->send($account->email, 'New User', 'newUser.phtml', [
                 'firstname' => $account->firstname,
                 'email' => $account->email,
-                'account' => $account
+                'account' => $account,
+                'token' => $token
             ]);
         }
         
