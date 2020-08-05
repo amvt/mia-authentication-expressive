@@ -9,6 +9,13 @@ namespace Mobileia\Expressive\Auth\Handler;
  */
 class RegisterInternalHandler extends \Mobileia\Expressive\Request\MiaRequestHandler
 {
+    protected $sendMail = false;
+    
+    public function __construct($sendMail = false)
+    {
+        $this->sendMail = $sendMail;
+    }
+    
     public function handle(\Psr\Http\Message\ServerRequestInterface $request): \Psr\Http\Message\ResponseInterface
     {
         // Obtener parametros obligatorios
@@ -16,7 +23,7 @@ class RegisterInternalHandler extends \Mobileia\Expressive\Request\MiaRequestHan
         $password = $this->getParam($request, 'password', '');
         // Verificar si ya existe la cuenta
         $account = \Mobileia\Expressive\Auth\Model\MIAUser::where('email', $email)->first();
-        if($account !== null){
+        if($account !== null||$email == ''){
             return new \Mobileia\Expressive\Diactoros\MiaJsonErrorResponse(-1, 'Este email ya se encuentra registrado');
         }
         // Creamos cuenta
@@ -30,6 +37,17 @@ class RegisterInternalHandler extends \Mobileia\Expressive\Request\MiaRequestHan
         $account->password = \Mobileia\Expressive\Auth\Model\MIAUser::encryptPassword($password);
         $account->role = \Mobileia\Expressive\Auth\Model\MIAUser::ROLE_GENERAL;
         $account->save();
+        
+        if($this->sendMail){
+            /* @var $sendgrid \Mobileia\Expressive\Mail\Service\Sendgrid */
+            $sendgrid = $request->getAttribute('Sendgrid');
+            $sendgrid->send($account->email, 'New User', 'newUser.phtml', [
+                'firstname' => $account->firstname,
+                'email' => $account->email,
+                'account' => $account
+            ]);
+        }
+        
         // Devolvemos datos del usuario
         return new \Mobileia\Expressive\Diactoros\MiaJsonResponse($account->toArray());
     }

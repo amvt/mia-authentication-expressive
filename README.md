@@ -38,8 +38,9 @@ $user = $request->getAttribute(\Mobileia\Expressive\Auth\Model\MIAUser::class);
 ```php
     /** AUTHENTICATION **/
     $app->route('/mia-auth/login', [Mobileia\Expressive\Auth\Handler\LoginInternalHandler::class], ['GET', 'POST', 'OPTIONS', 'HEAD'], 'mia_auth.login');
-    $app->route('/mia-auth/register', [Mobileia\Expressive\Auth\Handler\RegisterInternalHandler::class], ['GET', 'POST', 'OPTIONS', 'HEAD'], 'mia_auth.register');
+    $app->route('/mia-auth/register', [\Mobileia\Expressive\Mail\Handler\SendgridHandler::class, new \Mobileia\Expressive\Auth\Handler\RegisterInternalHandler(true)], ['GET', 'POST', 'OPTIONS', 'HEAD'], 'mia_auth.register');
     $app->route('/mia-auth/update-profile', [Mobileia\Expressive\Auth\Handler\UpdateProfileHandler::class], ['GET', 'POST', 'OPTIONS', 'HEAD'], 'mia_auth.update-profile');
+    $app->route('/mia-auth/recovery', [\Mobileia\Expressive\Mail\Handler\SendgridHandler::class, Mobileia\Expressive\Auth\Handler\MiaRecoveryHandler::class], ['GET', 'POST', 'OPTIONS', 'HEAD'], 'mia_auth.recovery');
     $app->route('/mia-auth/change-password-recovery', [Mobileia\Expressive\Auth\Handler\MiaPasswordRecoveryHandler::class], ['GET', 'POST', 'OPTIONS', 'HEAD'], 'mia_auth.change-password-recovery');
     $app->route('/mia-auth/me', [\Mobileia\Expressive\Auth\Handler\AuthInternalHandler::class, Mobileia\Expressive\Auth\Handler\FetchProfileHandler::class], ['GET', 'POST', 'OPTIONS', 'HEAD'], 'mia_auth.me');
     
