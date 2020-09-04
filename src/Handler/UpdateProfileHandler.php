@@ -40,6 +40,7 @@ class UpdateProfileHandler extends \Mobileia\Expressive\Auth\Request\MiaAuthRequ
             if(\Mobileia\Expressive\Auth\Model\MIAUser::where('email', $newEmail)->first() !== null){
                 return new \Mobileia\Expressive\Diactoros\MiaJsonErrorResponse(-3, 'El nuevo email ya existe!');
             }
+            $item->email = $newEmail;
         }else{
             $item->email = $newEmail;
         }
