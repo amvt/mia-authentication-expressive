@@ -24,7 +24,7 @@ class MIAAccessToken  extends \Illuminate\Database\Eloquent\Model
     public static function generateExpires()
     {
         $date = new \DateTime();
-        $date->add(new \DateInterval('P60D'));
+        $date->add(new \DateInterval('P1D'));
         return $date->format('Y-m-d H:i:s');
     }
     /**
